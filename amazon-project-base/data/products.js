@@ -1,4 +1,5 @@
 import { formatCurrency } from "../scripts/utils/money.js";
+// <= >= ==> >==< <-||-> === !==
 export function getProduct(productId) {
   let matchingProduct;
   products.forEach((product) => {
@@ -42,6 +43,11 @@ class Clothing extends Product {
     <a href="${this.sizeChartLink}" target="_blank">Size chart</a>`;
   }
 }
+/*
+const date = new Date();
+console.log(date);
+console.log(date.toLocaleTimeString());
+*/
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
