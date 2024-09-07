@@ -1,8 +1,11 @@
 import { cart, removeFromCart } from "../../data/cart.js";
-import { products , getProduct } from "../../data/products.js";
+import { products, getProduct } from "../../data/products.js";
 import formatCurrency from "../utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
-import { deliveryOptions , getDeliveryOption} from "../../data/deliveryoptions.js";
+import {
+  deliveryOptions,
+  getDeliveryOption,
+} from "../../data/deliveryoptions.js";
 import { updateDeliveryOption } from "../../data/cart.js";
 import { renderPaymentSummary } from "./paymentSummary.js";
 export function renderOrderSummary() {
@@ -11,11 +14,11 @@ export function renderOrderSummary() {
     const productId = cartItem.productId;
 
     let matchingProduct = getProduct(productId);
-    
+
     console.log(matchingProduct);
     const deliveryOptionId = cartItem.deliveryOptionsId;
-    const deliveryOption= getDeliveryOption(deliveryOptionId);
-   
+    const deliveryOption = getDeliveryOption(deliveryOptionId);
+
     const today = dayjs();
     const deliveryDate = today.add(deliveryOption.deliveryDays, "days");
     const dateString = deliveryDate.format("dddd, MMMM D");
@@ -98,10 +101,11 @@ export function renderOrderSummary() {
     link.addEventListener("click", () => {
       const productId = link.dataset.productId;
       removeFromCart(productId);
-      const container = document
-        .querySelector(`.js-cart-item-container-${productId}`);
-        container.remove();
-        renderPaymentSummary();
+      const container = document.querySelector(
+        `.js-cart-item-container-${productId}`
+      );
+      container.remove();
+      renderPaymentSummary();
     });
   });
   document.querySelectorAll(".js-delivery-option").forEach((option) => {
