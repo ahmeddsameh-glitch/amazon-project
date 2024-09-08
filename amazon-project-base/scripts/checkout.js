@@ -3,13 +3,18 @@ import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import { loadProducts, loadProductsFetch } from "../data/products.js";
 import { loadCart } from "../data/cart.js";
 async function loadPage() {
-  console.log("load page");
-  await loadProductsFetch();
-  const value = await new Promise((resolve) => {
-    loadCart(() => {
-      resolve("value3");
+  try {
+    //throw "error";
+    await loadProductsFetch();
+    const value = await new Promise((resolve, reject) => {
+      loadCart(() => {
+        // reject("value3");
+        resolve("value");
+      });
     });
-  });
+  } catch (error) {
+    console.log("unexpected error. try again later.");
+  }
   renderOrderSummary();
   renderPaymentSummary();
   return "value";
