@@ -8,6 +8,8 @@ import {
 } from "../../data/deliveryoptions.js";
 import { updateDeliveryOption } from "../../data/cart.js";
 import { renderPaymentSummary } from "./paymentSummary.js";
+import { loadProducts } from "../../data/products.js";
+
 export function renderOrderSummary() {
   let cartSummaryHTML = "";
   cart.forEach((cartItem) => {
